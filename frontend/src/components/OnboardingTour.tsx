@@ -53,9 +53,8 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
         onSkip?.();
     };
 
-    if (!isOpen) return null;
-
     const currentStepData = steps[currentStep];
+    if (!isOpen || !currentStepData) return null;
     const isLastStep = currentStep === steps.length - 1;
 
     return (

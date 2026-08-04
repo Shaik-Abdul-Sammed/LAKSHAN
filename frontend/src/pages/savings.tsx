@@ -378,7 +378,7 @@ export default function Savings() {
                     variant="contained" 
                     startIcon={<Add />} 
                     onClick={() => setCreatePlanDialogOpen(true)}
-                    disabled={isGuest}
+                    disabled={!!isGuest}
                   >
                     Create New Plan
                   </Button>
@@ -445,7 +445,7 @@ export default function Savings() {
                                 size="small"
                                 startIcon={<Lock />}
                                 onClick={() => openLockDialog(plan)}
-                                disabled={isGuest || plan.current_amount <= lockedAmount}
+                                disabled={!!isGuest || plan.current_amount <= lockedAmount}
                               >
                                 Lock More
                               </Button>
@@ -461,7 +461,7 @@ export default function Savings() {
                                 size="small"
                                 startIcon={<LockOpen />}
                                 onClick={() => handleUnlockSavings(plan.id)}
-                                disabled={isGuest || lockedAmount === 0}
+                                disabled={!!isGuest || lockedAmount === 0}
                               >
                                 Unlock
                               </Button>
@@ -489,7 +489,7 @@ export default function Savings() {
                         variant="contained" 
                         startIcon={<Add />} 
                         onClick={() => setCreatePlanDialogOpen(true)}
-                        disabled={isGuest}
+                        disabled={!!isGuest}
                       >
                         Create Your First Plan
                       </Button>

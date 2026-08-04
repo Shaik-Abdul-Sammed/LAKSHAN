@@ -35,7 +35,7 @@ function isTokenExpired(token: string | null) {
   if (!token) return true;
   try {
     const parts = token.split('.');
-    if (parts.length < 2) return true;
+    if (parts.length < 2 || !parts[1]) return true;
     const payload = JSON.parse(decodeURIComponent(
       atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'))
         .split('')

@@ -196,7 +196,7 @@ const AlertsPanel = React.memo(function AlertsPanel({ alerts, onAction }: Alerts
                   key={alert.id}
                   severity={getAlertColor(alert.type)}
                   icon={getAlertIcon(alert.type)}
-                  onClose={alert.actionable ? undefined : () => handleDismiss(alert.id)}
+                  {...(!alert.actionable ? { onClose: () => handleDismiss(alert.id) } : {})}
                   action={
                     alert.actionable && (
                       <Button

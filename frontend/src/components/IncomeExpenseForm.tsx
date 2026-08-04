@@ -149,7 +149,7 @@ export default function IncomeExpenseForm({
               value={income}
               onChange={(e) => {
                 setIncome(e.target.value);
-                setErrors({ ...errors, income: undefined });
+                setErrors((prev) => { const { income, ...rest } = prev; return rest; });
               }}
               error={!!errors.income}
               helperText={errors.income || 'Your total monthly income'}
@@ -175,7 +175,7 @@ export default function IncomeExpenseForm({
               value={expenses}
               onChange={(e) => {
                 setExpenses(e.target.value);
-                setErrors({ ...errors, expenses: undefined });
+                setErrors((prev) => { const { expenses, ...rest } = prev; return rest; });
               }}
               error={!!errors.expenses}
               helperText={errors.expenses || 'Your total monthly spending'}

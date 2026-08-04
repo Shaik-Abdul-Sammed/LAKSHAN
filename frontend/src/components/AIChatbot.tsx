@@ -62,7 +62,7 @@ const AIChatbot: React.FC = () => {
                 text: botResponse.text,
                 sender: 'bot',
                 timestamp: new Date(),
-                suggestions: botResponse.suggestions,
+                ...(botResponse.suggestions && { suggestions: botResponse.suggestions })
             };
             setMessages((prev) => [...prev, botMessage]);
         }, 1000);

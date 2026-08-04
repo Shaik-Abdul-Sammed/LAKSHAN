@@ -98,7 +98,7 @@ const MetricCardContent = styled(CardContent)({
   justifyContent: 'space-between'
 });
 
-const AnimatedNumber = ({ value, suffix = '', prefix = '' }) => {
+const AnimatedNumber: React.FC<{ value: number; suffix?: string; prefix?: string }> = ({ value, suffix = '', prefix = '' }) => {
   const [displayValue, setDisplayValue] = useState(0);
   useEffect(() => {
     const timer = setTimeout(() => setDisplayValue(value), 400);

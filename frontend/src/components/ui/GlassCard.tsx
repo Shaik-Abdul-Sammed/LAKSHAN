@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardProps, alpha } from '@mui/material';
 
-interface GlassCardProps extends CardProps {
+interface GlassCardProps extends Omit<CardProps, 'sx'> {
+    sx?: CardProps['sx']; // optional style prop
     gradient?: string;
     blur?: number;
     borderGlow?: boolean;
     children: React.ReactNode;
-    sx?: CardProps['sx']; // Add sx prop to the interface
 }
 
 /**

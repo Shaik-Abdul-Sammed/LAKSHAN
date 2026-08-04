@@ -270,9 +270,10 @@ const FinancialCrisisSimulator: React.FC = () => {
     }
 
     // Calculate metrics
+    const firstProj = monthlyProjections[0] || { month: 1, income: 0, expenses: 0, savings: 0, cumulativeLoss: 0 };
     const worstMonth = monthlyProjections.reduce((min, month) =>
       month.savings < min.savings ? month : min
-      , monthlyProjections[0]);
+      , firstProj);
 
     const survivalMonths = monthlyProjections.findIndex(m => m.cumulativeLoss > userProfile.emergencyFund) ||
       monthlyProjections.length;

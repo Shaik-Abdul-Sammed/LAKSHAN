@@ -484,7 +484,7 @@ const BreakdownTab: React.FC<{ data: AnalyticsData }> = ({ data }) => {
                   labelLine={false}
                   label={(props: any) => {
                     const entry = data.categoryBreakdown[props.index];
-                    return `${entry.category}: ${entry.percentage}%`;
+                    return entry ? `${entry.category}: ${entry.percentage}%` : '';
                   }}
                   outerRadius={80}
                   fill="#8884d8"

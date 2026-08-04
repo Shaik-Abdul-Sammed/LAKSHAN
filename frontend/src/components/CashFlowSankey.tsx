@@ -60,7 +60,7 @@ const CashFlowSankey: React.FC<CashFlowSankeyProps> = ({ data, loading = false, 
       investment: '#f59e0b',
       default: '#6b7280',
     };
-    return colorMap[category?.toLowerCase() ?? 'default'];
+    return colorMap[category?.toLowerCase() ?? 'default'] ?? '#6b7280';
   };
 
   const generateLinkPath = (source: any, target: any) => {

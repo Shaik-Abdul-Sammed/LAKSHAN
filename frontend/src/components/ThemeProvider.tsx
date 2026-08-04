@@ -43,20 +43,27 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     const theme = createTheme({
         palette: {
+            contrastThreshold: 4.5,
             mode,
             primary: {
-                main: mode === 'light' ? '#667eea' : '#8b9dff',
+                main: mode === 'light' ? '#2563eb' : '#93c5fd', // WCAG AA compliant blues
+                light: mode === 'light' ? '#60a5fa' : '#bfdbfe',
+                dark: mode === 'light' ? '#1d4ed8' : '#3b82f6',
+                contrastText: mode === 'light' ? '#ffffff' : '#0f172a',
             },
             secondary: {
-                main: mode === 'light' ? '#764ba2' : '#9d6bc8',
+                main: mode === 'light' ? '#7c3aed' : '#c084fc', // WCAG AA compliant purples
+                light: mode === 'light' ? '#a78bfa' : '#e9d5ff',
+                dark: mode === 'light' ? '#6d28d9' : '#9333ea',
+                contrastText: mode === 'light' ? '#ffffff' : '#0f172a',
             },
             background: {
-                default: mode === 'light' ? '#f9fafb' : '#0f172a',
+                default: mode === 'light' ? '#f8fafc' : '#0f172a',
                 paper: mode === 'light' ? '#ffffff' : '#1e293b',
             },
             text: {
-                primary: mode === 'light' ? '#1f2937' : '#f1f5f9',
-                secondary: mode === 'light' ? '#6b7280' : '#94a3b8',
+                primary: mode === 'light' ? '#0f172a' : '#f8fafc',
+                secondary: mode === 'light' ? '#475569' : '#cbd5e1',
             },
         },
         typography: {
@@ -77,13 +84,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
                     root: {
                         boxShadow: mode === 'light'
                             ? '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
-                            : '0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3)',
+                            : '0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4)',
                         transition: 'all 0.3s ease',
                         '&:hover': {
                             transform: 'translateY(-2px)',
                             boxShadow: mode === 'light'
                                 ? '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
-                                : '0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3)',
+                                : '0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)',
                         },
                     },
                 },

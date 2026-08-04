@@ -46,8 +46,9 @@ const DebtDashboard = () => {
             }
 
             remainingDebts = remainingDebts.filter(debt => debt.balance > 0);
-            if (remainingDebts.length > 0 && remainingDebts[0].balance <= 0) {
-                extraPayment += remainingDebts[0].minPayment;
+            const firstRemaining = remainingDebts[0];
+            if (firstRemaining && firstRemaining.balance <= 0) {
+                extraPayment += firstRemaining.minPayment;
             }
         }
 

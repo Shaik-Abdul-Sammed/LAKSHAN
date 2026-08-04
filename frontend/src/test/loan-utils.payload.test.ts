@@ -6,7 +6,7 @@ describe('loanRecommendation normalizeLoanRequest', () => {
     const normalized = normalizeLoanRequest({
       annualIncome: 1200000 as unknown as number,
       monthlyExpenses: 35000 as unknown as number,
-      existingEmi: undefined,
+      existingEmi: undefined as unknown as number,
       desiredLoanAmount: 800000 as unknown as number,
       tenureMonths: 60 as unknown as number,
       creditScore: 735 as unknown as number,

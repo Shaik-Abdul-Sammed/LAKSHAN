@@ -21,8 +21,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Helper to decode JWT payload manually in the browser
 function parseJwt(token: string) {
   try {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const parts = token.split('.');
+    if (!parts[1]) {
+      return null;
+    }
+    const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
@@ -70,10 +73,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
         // Token is valid - extract user info
         const userData: User = {
-          id: decoded.userId?.toString() || '1',
-          email: decoded.email || null,
-          name: decoded.name || 'User',
-          isGuest: decoded.isGuest || false
+          id: decoded.userId?.toString() ?? '1',
+          email: decoded.email ?? null,
+          name: decoded.name ?? 'User',
+          isGuest: decoded.isGuest ?? false
         };
         setUser(userData);
       } catch (error) {

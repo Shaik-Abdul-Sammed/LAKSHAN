@@ -34,7 +34,7 @@ const CreditScoreTracker: React.FC<CreditScoreProps> = ({ score = 750 }) => {
     ];
 
     const { rating, color } = getScoreRating(score);
-    const previousScore = scoreData[scoreData.length - 2].score;
+    const previousScore = scoreData[scoreData.length - 2]?.score ?? score;
     const scoreChange = score - previousScore;
 
     return (

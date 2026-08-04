@@ -113,7 +113,7 @@ const BudgetPlanner = () => {
                                         dataKey="value"
                                     >
                                         {pieData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={categories[index].color} />
+                                            <Cell key={`cell-${index}`} fill={categories[index]?.color || '#8884d8'} />
                                         ))}
                                     </Pie>
                                     <Tooltip />

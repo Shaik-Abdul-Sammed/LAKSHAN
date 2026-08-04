@@ -303,7 +303,9 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({
         ];
 
         const randomNotification = sampleNotifications[Math.floor(Math.random() * sampleNotifications.length)];
-        addNotification(randomNotification);
+        if (randomNotification) {
+          addNotification(randomNotification);
+        }
       }
     }, 30000);
 

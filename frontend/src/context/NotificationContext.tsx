@@ -134,7 +134,9 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
             // 10% chance to add a notification every 30 seconds
             if (Math.random() < 0.1) {
                 const randomNotif = randomNotifications[Math.floor(Math.random() * randomNotifications.length)];
-                addNotification(randomNotif);
+                if (randomNotif) {
+                    addNotification(randomNotif);
+                }
             }
         }, 30000); // Every 30 seconds
 
@@ -280,13 +282,13 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
             </Drawer>
 
             {/* Toast Snackbar */}
-            <Snackbar
-                open={snackbar.open}
-                autoHideDuration={5000}
-                onClose={() => setSnackbar({ open: false })}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
-                {snackbar.notification && (
+            {snackbar.notification && (
+                <Snackbar
+                    open={snackbar.open}
+                    autoHideDuration={5000}
+                    onClose={() => setSnackbar({ open: false })}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                >
                     <Alert
                         onClose={() => setSnackbar({ open: false })}
                         severity={snackbar.notification.type}
@@ -297,8 +299,8 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
                         </Typography>
                         <Typography variant="caption">{snackbar.notification.message}</Typography>
                     </Alert>
-                )}
-            </Snackbar>
+                </Snackbar>
+            )}
         </NotificationContext.Provider>
     );
 };

@@ -71,8 +71,9 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
         const fixed = num.toFixed(decimals);
         const parts = fixed.split('.');
 
-        // Add thousands separator
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+        if (parts[0]) {
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+        }
 
         return parts.join('.');
     };
